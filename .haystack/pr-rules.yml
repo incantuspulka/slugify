@@ -1,0 +1,57 @@
+rules:
+  - id: "keep-api-docs-and-types-in-sync"
+    name: "Keep API docs and types in sync"
+    type: llm
+    severity: warning
+    category: "patterns"
+    message: "When options, methods, or exports change, update both `readme.md` and `index.d.ts` so descriptions, examples, and signatures stay aligned with runtime behavior."
+    llm:
+      prompt: "When options, methods, or exports change, update both `readme.md` and `index.d.ts` so descriptions, examples, and signatures stay aligned with runtime behavior."
+  - id: "update-types-for-runtime-api-changes"
+    name: "Mirror runtime API in TypeScript declarations"
+    type: llm
+    severity: warning
+    category: "patterns"
+    message: "Any public API or option change in `index.js` must be reflected in `index.d.ts`, including callable shapes and documented defaults."
+    llm:
+      prompt: "Any public API or option change in `index.js` must be reflected in `index.d.ts`, including callable shapes and documented defaults."
+  - id: "require-tests-for-behavior-changes"
+    name: "Add tests for behavior changes"
+    type: llm
+    severity: warning
+    category: "patterns"
+    message: "Any logic change in `index.js` must include `test.js` updates with explicit expected-output assertions, including edge cases and option interactions."
+    llm:
+      prompt: "Any logic change in `index.js` must include `test.js` updates with explicit expected-output assertions, including edge cases and option interactions."
+  - id: "preserve-error-contract-for-invalid-input"
+    name: "Preserve invalid-input error contract"
+    type: llm
+    severity: warning
+    category: "patterns"
+    message: "Keep strict input validation by throwing `TypeError` for non-string input and invalid option combinations instead of silently coercing values."
+    llm:
+      prompt: "Keep strict input validation by throwing `TypeError` for non-string input and invalid option combinations instead of silently coercing values."
+  - id: "use-escaped-separator-in-dynamic-regex"
+    name: "Escape separator in dynamic regex"
+    type: llm
+    severity: warning
+    category: "security"
+    message: "When building separator-dependent regular expressions, escape separator values with `escape-string-regexp` and use the existing separator normalization flow rather than ad-hoc regex logic."
+    llm:
+      prompt: "When building separator-dependent regular expressions, escape separator values with `escape-string-regexp` and use the existing separator normalization flow rather than ad-hoc regex logic."
+  - id: "keep-transliteration-replacement-ordering"
+    name: "Preserve transliteration and replacement ordering"
+    type: llm
+    severity: warning
+    category: "patterns"
+    message: "Changes to replacement logic must keep the established transliteration/custom-replacements behavior, including distinct handling when `transliterate` is false."
+    llm:
+      prompt: "Changes to replacement logic must keep the established transliteration/custom-replacements behavior, including distinct handling when `transliterate` is false."
+  - id: "use-esm-module-syntax"
+    name: "Use ESM module syntax"
+    type: llm
+    severity: warning
+    category: "style"
+    message: "Use `import`/`export` syntax for code changes and do not introduce CommonJS `require` or `module.exports` in runtime modules."
+    llm:
+      prompt: "Use `import`/`export` syntax for code changes and do not introduce CommonJS `require` or `module.exports` in runtime modules."
